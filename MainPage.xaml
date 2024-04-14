@@ -7,14 +7,7 @@
         <HorizontalStackLayout>
 
             <!-- Side Menu -->
-            <VerticalStackLayout WidthRequest="250" BackgroundColor="#070F2B" Spacing="10">
-
-                <!-- Logo -->
-                <Label 
-                    HeightRequest="100" WidthRequest="250"
-                    FontSize="Header" TextColor="White"
-                    VerticalTextAlignment="Center"
-                    HorizontalTextAlignment="Center">Logo</Label>
+            <VerticalStackLayout WidthRequest="250" BackgroundColor="#070F2B" Spacing="15" Padding="0, 15, 0, 0">
 
                 <Button BackgroundColor="#1B1A55" TextColor="White"
                     WidthRequest="200"
@@ -22,23 +15,28 @@
 
                 <Button BackgroundColor="#1B1A55" TextColor="White"
                     WidthRequest="200"
-                    x:Name="RentalButton"
-                    Text="Rental" />
+                    x:Name="RentalNavButton"
+                    Text="Equipment Rental" />
 
                 <Button BackgroundColor="#1B1A55" TextColor="White"
                     WidthRequest="200"
-                    x:Name="CustomerButton"
-                    Text="Manage Customer" />
+                    x:Name="CustomerNavButton"
+                    Text="Customer Management" />
 
                 <Button BackgroundColor="#1B1A55" TextColor="White"
-                    x:Name="InventoryButton"
+                    x:Name="InventoryNavButton"
                     WidthRequest="200"
-                    Text="Manage Inventory" />
+                    Text="Equipment Inventory Management" />
 
                 <Button BackgroundColor="#1B1A55" TextColor="White"
-                    x:Name="SystemButton"
+                    x:Name="SystemNavButton"
                     WidthRequest="200"
-                    Text="Manage System" />
+                    Text="System Management" />
+
+                <Button BackgroundColor="#1B1A55" TextColor="White"
+                    x:Name="ReportNavButton"
+                    WidthRequest="200"
+                    Text="Generate Reports" />
 
             </VerticalStackLayout>
 
