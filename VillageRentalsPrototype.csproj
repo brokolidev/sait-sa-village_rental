@@ -60,6 +60,7 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="MySqlConnector" Version="2.3.6" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -75,16 +76,16 @@
 	  <MauiXaml Update="Pages\Customer\CustomerView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Equipment\EquipmentEdit.xaml">
+	  <MauiXaml Update="Pages\Inventory\EquipmentEdit.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Equipment\EquipmentList.xaml">
+	  <MauiXaml Update="Pages\Inventory\EquipmentList.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Equipment\EquipmentNew.xaml">
+	  <MauiXaml Update="Pages\Inventory\EquipmentNew.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Equipment\EquipmentView.xaml">
+	  <MauiXaml Update="Pages\Inventory\EquipmentView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Rental.xaml">

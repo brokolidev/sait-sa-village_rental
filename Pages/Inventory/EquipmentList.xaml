@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VillageRentalsPrototype.Pages.Inventory.EquipmentList"
+             Title="EquipmentList">
+
+    <ScrollView>
+        <HorizontalStackLayout>
+
+            <!-- Side Menu -->
+            <VerticalStackLayout WidthRequest="250" BackgroundColor="#070F2B" Spacing="10" Padding="20">
+
+                <!-- Logo -->
+                <Button BackgroundColor="#1B1A55" TextColor="White"
+                WidthRequest="200"
+                Text="Home" />
+
+                <Button BackgroundColor="#1B1A55" TextColor="White"
+                WidthRequest="200"
+                x:Name="RentalButton"
+                Text="Rental" />
+
+                <Button BackgroundColor="#1B1A55" TextColor="White"
+                WidthRequest="200"
+                x:Name="CustomerButton"
+                Text="Manage Customer" />
+
+                <Button BackgroundColor="#1B1A55" TextColor="White"
+                x:Name="EquipmentButton"
+                WidthRequest="200"
+                Text="Manage Inventory" />
+
+                <Button BackgroundColor="#1B1A55" TextColor="White"
+                x:Name="SystemButton"
+                WidthRequest="200"
+                Text="Manage System" />
+
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <Label FontSize="Header">Equipment List</Label>
+
+            </VerticalStackLayout>
+
+        </HorizontalStackLayout>
+    </ScrollView>
+
+
+</ContentPage>

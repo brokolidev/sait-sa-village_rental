@@ -7,36 +7,33 @@
         <HorizontalStackLayout>
 
             <!-- Side Menu -->
-            <VerticalStackLayout WidthRequest="250" BackgroundColor="#070F2B" Spacing="15" Padding="0, 15, 0, 0">
+            <VerticalStackLayout WidthRequest="250" BackgroundColor="#070F2B" Spacing="10" Padding="20">
 
+                <!-- Logo -->
                 <Button BackgroundColor="#1B1A55" TextColor="White"
                     WidthRequest="200"
                     Text="Home" />
 
                 <Button BackgroundColor="#1B1A55" TextColor="White"
                     WidthRequest="200"
-                    x:Name="RentalNavButton"
-                    Text="Equipment Rental" />
+                    x:Name="RentalButton"
+                    Text="Rental" />
 
                 <Button BackgroundColor="#1B1A55" TextColor="White"
                     WidthRequest="200"
-                    x:Name="CustomerNavButton"
-                    Text="Customer Management" />
+                    x:Name="CustomerButton"
+                    Text="Manage Customer" />
 
                 <Button BackgroundColor="#1B1A55" TextColor="White"
-                    x:Name="InventoryNavButton"
+                    x:Name="EquipmentButton"
                     WidthRequest="200"
-                    Text="Equipment Inventory Management" />
+                    Clicked="EquipmentButton_Clicked"
+                    Text="Manage Inventory" />
 
                 <Button BackgroundColor="#1B1A55" TextColor="White"
-                    x:Name="SystemNavButton"
+                    x:Name="SystemButton"
                     WidthRequest="200"
-                    Text="System Management" />
-
-                <Button BackgroundColor="#1B1A55" TextColor="White"
-                    x:Name="ReportNavButton"
-                    WidthRequest="200"
-                    Text="Generate Reports" />
+                    Text="Manage System" />
 
             </VerticalStackLayout>
 
