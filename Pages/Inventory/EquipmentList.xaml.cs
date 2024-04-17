@@ -16,11 +16,6 @@ public partial class EquipmentList : ContentPage
 		dbManager = new DatabaseManager();
 		equipments = dbManager.GetAllEquipments();
 
-		foreach (var equipment in equipments)
-		{
-			Debug.WriteLine(equipment.Name, equipment.CategoryName);
-		}
-
 		EquipListView.ItemsSource = equipments;
         EquipListView.ItemSelected += OnEquipmentSelected;
     }
@@ -33,7 +28,7 @@ public partial class EquipmentList : ContentPage
         var selectedEquipment = (Models.Equipment)e.SelectedItem;
 
         Shell.Current.GoToAsync($"{nameof(EquipmentView)}" +
-            $"?ISBN={selectedEquipment.Id}");
+            $"?Id={selectedEquipment.Id}");
     }
 
 	private void AddEquipment_Clicked(object sender, EventArgs e)
@@ -43,7 +38,7 @@ public partial class EquipmentList : ContentPage
 
 
 	// navigation functions
-	private void EquipmentButton_Clicked()
+	private void EquipmentButton_Clicked(object sender, EventArgs e)
 	{
 		// do nothing
 	}

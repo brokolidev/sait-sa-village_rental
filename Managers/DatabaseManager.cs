@@ -134,6 +134,7 @@ namespace VillageRentalsPrototype.Managers
 
                     using (var reader = command.ExecuteReader())
                     {
+                        reader.Read();
                         return new Equipment(
                                 reader.GetInt32("id"),
                                 reader.GetString("name"),

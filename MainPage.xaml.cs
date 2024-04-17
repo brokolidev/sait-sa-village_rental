@@ -1,13 +1,9 @@
-﻿using MySqlConnector;
-using VillageRentalsPrototype.Managers;
-using VillageRentalsPrototype.Pages.Inventory;
+﻿using VillageRentalsPrototype.Pages.Inventory;
 
 namespace VillageRentalsPrototype
 {
     public partial class MainPage : ContentPage
     {
-        private DatabaseManager dbManager;
-
         public MainPage()
         {
             InitializeComponent();

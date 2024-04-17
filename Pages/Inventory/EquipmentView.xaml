@@ -41,6 +41,8 @@
 
                 <Label FontSize="Header">Equipment Detail</Label>
 
+                <Button Text="Cancel" BackgroundColor="DarkRed" Clicked="Cancel_Clicked" />
+
 
             </VerticalStackLayout>
 
