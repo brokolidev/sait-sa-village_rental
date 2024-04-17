@@ -118,5 +118,33 @@ namespace VillageRentalsPrototype.Managers
             return equipments;
         }
 
+        public Equipment GetEquipment(int id)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "SELECT e.id, e.name, description, daily_rate, c.name as category_name " +
+                    "FROM equipment e join category c on e.category_id=c.id " +
+                    "WHERE e.id=@Id";
+                
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        return new Equipment(
+                                reader.GetInt32("id"),
+                                reader.GetString("name"),
+                                reader.GetString("description"),
+                                reader.GetDouble("daily_rate"),
+                                reader.GetString("category_name")
+                        );
+                    }
+                }
+            }
+        }
+
     }
 }

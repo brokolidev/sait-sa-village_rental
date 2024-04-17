@@ -2,40 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VillageRentalsPrototype.Pages.Inventory.EquipmentList"
+             xmlns:controls="clr-namespace:VillageRentalsPrototype.Pages.Controls"
              Title="EquipmentList">
 
     <ScrollView>
         <HorizontalStackLayout>
 
-            <!-- Side Menu -->
-            <VerticalStackLayout WidthRequest="250" BackgroundColor="#070F2B" Spacing="10" Padding="20">
-
-                <!-- Logo -->
-                <Button BackgroundColor="#1B1A55" TextColor="White"
-                WidthRequest="200"
-                Text="Home" />
-
-                <Button BackgroundColor="#1B1A55" TextColor="White"
-                WidthRequest="200"
-                x:Name="RentalButton"
-                Text="Rental" />
-
-                <Button BackgroundColor="#1B1A55" TextColor="White"
-                WidthRequest="200"
-                x:Name="CustomerButton"
-                Text="Manage Customer" />
-
-                <Button BackgroundColor="#1B1A55" TextColor="White"
-                x:Name="EquipmentButton"
-                WidthRequest="200"
-                Text="Manage Inventory" />
-
-                <Button BackgroundColor="#1B1A55" TextColor="White"
-                x:Name="SystemButton"
-                WidthRequest="200"
-                Text="Manage System" />
-
-            </VerticalStackLayout>
+            <controls:Nav x:Name="NavControl"
+                OnEquipmentMangementClicked="EquipmentButton_Clicked" />
 
             <VerticalStackLayout Padding="20" Spacing="15">
 
@@ -60,7 +34,6 @@
                 </ListView>
 
                 <Button Text="Add Equipment" Clicked="AddEquipment_Clicked" />
-                <Button Text="Delete Equipment" Clicked="DeleteEquipment_Clicked" BackgroundColor="DarkRed" />
 
             </VerticalStackLayout>
 

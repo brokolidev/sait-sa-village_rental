@@ -2,8 +2,10 @@ namespace VillageRentalsPrototype.Pages.Equipment;
 
 public partial class EquipmentView : ContentPage
 {
-	public EquipmentView()
-	{
-		InitializeComponent();
-	}
+    private Models.Equipment equipment;
+
+    public EquipmentView()
+    {
+        InitializeComponent();
+    }
 }

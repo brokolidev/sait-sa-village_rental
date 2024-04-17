@@ -1,4 +1,5 @@
 ﻿using VillageRentalsPrototype.Pages;
+using VillageRentalsPrototype.Pages.Equipment;
 using VillageRentalsPrototype.Pages.Inventory;
 
 namespace VillageRentalsPrototype
@@ -10,7 +11,11 @@ namespace VillageRentalsPrototype
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
+
+            // Equipment
             Routing.RegisterRoute(nameof(EquipmentList), typeof(EquipmentList));
+            Routing.RegisterRoute(nameof(EquipmentNew), typeof(EquipmentNew));
+            Routing.RegisterRoute(nameof(EquipmentView), typeof(EquipmentView));
         }
     }
 }

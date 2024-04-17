@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using VillageRentalsPrototype.Managers;
+using VillageRentalsPrototype.Pages.Equipment;
 
 namespace VillageRentalsPrototype.Pages.Inventory;
 
@@ -21,15 +22,29 @@ public partial class EquipmentList : ContentPage
 		}
 
 		EquipListView.ItemsSource = equipments;
+        EquipListView.ItemSelected += OnEquipmentSelected;
+    }
+
+	private void OnEquipmentSelected(object sender, SelectedItemChangedEventArgs e)
+	{
+        if (EquipListView.SelectedItem == null)
+            return;
+
+        var selectedEquipment = (Models.Equipment)e.SelectedItem;
+
+        Shell.Current.GoToAsync($"{nameof(EquipmentView)}" +
+            $"?ISBN={selectedEquipment.Id}");
     }
 
 	private void AddEquipment_Clicked(object sender, EventArgs e)
 	{
-        //Navigation.PushAsync(new AddEquipment());
+		Shell.Current.GoToAsync(nameof(EquipmentNew));
     }
 
-    private void DeleteEquipment_Clicked(object sender, EventArgs e)
-    {
-        //Navigation.PushAsync(new AddEquipment());
-    }
+
+	// navigation functions
+	private void EquipmentButton_Clicked()
+	{
+		// do nothing
+	}
 }
