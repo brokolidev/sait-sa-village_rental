@@ -2,11 +2,24 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VillageRentalsPrototype.Pages.Equipment.EquipmentNew"
+             xmlns:controls="clr-namespace:VillageRentalsPrototype.Pages.Controls"
              Title="EquipmentNew">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ScrollView>
+        <HorizontalStackLayout>
+
+            <controls:Nav x:Name="NavControl"
+            OnEquipmentMangementClicked="EquipmentButton_Clicked" />
+
+            <VerticalStackLayout Padding="20" Spacing="15">
+
+                <Label FontSize="Header">Add New Equipment</Label>
+
+                <controls:EquipmentForm x:Name="EquipmentForm" />
+
+            </VerticalStackLayout>
+
+        </HorizontalStackLayout>
+    </ScrollView>
+
 </ContentPage>

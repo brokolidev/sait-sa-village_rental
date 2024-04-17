@@ -41,7 +41,27 @@
 
                 <Label FontSize="Header">Equipment Detail</Label>
 
-                <Button Text="Cancel" BackgroundColor="DarkRed" Clicked="Cancel_Clicked" />
+                <TableView Intent="Data" RowHeight="50">
+                    <TableRoot>
+                        <TableSection>
+                            <TextCell x:Name="Id" Text="ID" />
+                            <TextCell x:Name="Category" Text="Category" />
+                            <TextCell x:Name="Name" Text="Name" />
+                            <TextCell x:Name="Description" Text="Description" />
+                            <TextCell x:Name="DailyRate" Text="Daily Rate" />
+                        </TableSection>
+                    </TableRoot>
+                </TableView>
+
+                <Button BackgroundColor="DarkBlue" TextColor="White"
+                    Clicked="EditButton_Clicked"
+                    Text="Edit" />
+
+                <Button BackgroundColor="DarkRed" TextColor="White"
+                    Clicked="DeleteButton_Clicked"
+                    Text="Delete" />
+
+                <Button Text="Cancel" BackgroundColor="DarkGray" Clicked="Cancel_Clicked" />
 
 
             </VerticalStackLayout>

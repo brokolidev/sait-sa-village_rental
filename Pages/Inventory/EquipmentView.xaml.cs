@@ -33,12 +33,32 @@ public partial class EquipmentView : ContentPage
 
         if (equipment != null)
         {
-            Debug.WriteLine(equipment.Name, equipment.CategoryName);
+            SetEquipment();
         }
+    }
+
+    private void SetEquipment()
+    {
+        Id.Detail = equipment.Id.ToString();
+        Name.Detail = equipment.Name;
+        Category.Detail = equipment.CategoryName;
+        Name.Detail = equipment.Name;
+        Description.Detail = equipment.Description;
+        DailyRate.Detail = $"${equipment.DailyRate}";
     }
 
     private void Cancel_Clicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(EquipmentList));
+    }
+
+    private void DeleteButton_Clicked(object sender, EventArgs e)
+    {
+        // Delete the equipment
+    }
+
+    private void EditButton_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync(nameof(EquipmentEdit));
     }
 }

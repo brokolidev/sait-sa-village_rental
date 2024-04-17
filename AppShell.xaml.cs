@@ -16,6 +16,7 @@ namespace VillageRentalsPrototype
             Routing.RegisterRoute(nameof(EquipmentList), typeof(EquipmentList));
             Routing.RegisterRoute(nameof(EquipmentNew), typeof(EquipmentNew));
             Routing.RegisterRoute(nameof(EquipmentView), typeof(EquipmentView));
+            Routing.RegisterRoute(nameof(EquipmentEdit), typeof(EquipmentEdit));
         }
     }
 }
