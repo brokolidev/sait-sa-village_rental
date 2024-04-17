@@ -18,11 +18,12 @@ namespace VillageRentalsPrototype.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public double DailyRate { get; set; }
+        public string CategoryName { get; set; }
 
-        public Equipment(int id, int categoryId, string name, string description, double dailyRate)
+        public Equipment(int id, string name, string description, double dailyRate, string categoryName)
         {
             Id = id;
-            CategoryId = categoryId;
+            CategoryName = categoryName;
             Name = name;
             Description = description;
             DailyRate = dailyRate;

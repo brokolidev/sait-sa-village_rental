@@ -93,7 +93,7 @@ namespace VillageRentalsPrototype.Managers
             {
                 connection.Open();
 
-                var query = "SELECT * FROM equipment";
+                var query = "SELECT e.id, e.name, description, daily_rate, c.name as category_name from equipment e join category c on e.category_id=c.id";
 
                 using (var command = new MySqlCommand(query, connection))
                 {
@@ -104,10 +104,10 @@ namespace VillageRentalsPrototype.Managers
                             equipments.Add(
                                 new Equipment(
                                     reader.GetInt32("id"),
-                                    reader.GetInt32("category_id"),
                                     reader.GetString("name"),
                                     reader.GetString("description"),
-                                    reader.GetDouble("daily_rate") 
+                                    reader.GetDouble("daily_rate"),
+                                    reader.GetString("category_name")
                                     ) 
                                 );
                         }
