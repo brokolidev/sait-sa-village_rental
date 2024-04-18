@@ -328,5 +328,29 @@ namespace VillageRentalsPrototype.Managers
             }
         }
 
+        // add new rental
+        public void AddRental(Rental rental)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "INSERT INTO rental(customer_id, equipment_id, rented_at, cost) VALUES (@CustomerId, @EquipmentId, @RentedAt, @Cost)";
+
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    // round the cost to 2 decimal places
+                    rental.Cost = Math.Round(rental.Cost, 2);
+                    
+                    command.Parameters.AddWithValue("@CustomerId", rental.CustomerId);
+                    command.Parameters.AddWithValue("@EquipmentId", rental.EquipmentId);
+                    command.Parameters.AddWithValue("@RentedAt", rental.RentedAt); ;
+                    command.Parameters.AddWithValue("@Cost", rental.Cost);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }

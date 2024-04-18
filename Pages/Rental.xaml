@@ -2,60 +2,44 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VillageRentalsPrototype.Pages.Rental"
+             xmlns:controls="clr-namespace:VillageRentalsPrototype.Pages.Controls"
              Title="Rental">
+
 
     <ScrollView>
         <HorizontalStackLayout>
 
-            <!-- Side Menu -->
-            <VerticalStackLayout WidthRequest="250" BackgroundColor="#070F2B" Spacing="10">
+            <controls:Nav x:Name="NavControl" />
 
-                <!-- Logo -->
-                <Label 
-                HeightRequest="100" WidthRequest="250"
-                FontSize="Header" TextColor="White"
-                VerticalTextAlignment="Center"
-                HorizontalTextAlignment="Center">Logo</Label>
+            <VerticalStackLayout Padding="20" Spacing="15">
 
-                <Button BackgroundColor="#1B1A55" TextColor="White"
-                WidthRequest="200"
-                Text="Home" />
+                <Label FontSize="Header">Rentals</Label>
 
-                <Button BackgroundColor="#1B1A55" TextColor="White"
-                WidthRequest="200"
-                x:Name="RentalButton"
-                Text="Rental" />
+                <Label FontSize="Subtitle">Select a customer</Label>
+                <Picker x:Name="CustomerPicker" ></Picker>
 
-                <Button BackgroundColor="#1B1A55" TextColor="White"
-                WidthRequest="200"
-                x:Name="CustomerButton"
-                Text="Manage Customer" />
+                <Label FontSize="Subtitle">Select an equpiment</Label>
+                <Picker x:Name="EquipmentPicker" ></Picker>
 
-                <Button BackgroundColor="#1B1A55" TextColor="White"
-                x:Name="EquipmentButton"
-                WidthRequest="200"
-                Text="Manage Inventory" />
+                <Label FontSize="Subtitle">From :</Label>
+                <DatePicker x:Name="FromDatePicker"
+                    MaximumDate="12/31/2024"
+                    Date="06/21/2022" />
 
-                <Button BackgroundColor="#1B1A55" TextColor="White"
-                x:Name="SystemButton"
-                WidthRequest="200"
-                Text="Manage System" />
 
-            </VerticalStackLayout>
+                <Label FontSize="Subtitle">To :</Label>
+                <DatePicker x:Name="ToDatePicker"
+                    MaximumDate="12/31/2024"
+                    Date="06/21/2022" />
 
-            <VerticalStackLayout Padding="20" Spacing="20">
+                <Label FontSize="Small">Total Cost</Label>
+                <Entry x:Name="CostEntry" Placeholder="Cost" IsReadOnly="True" Text="0" />
 
-                <Label FontSize="Header">Village Rental</Label>
-
-                <Label FontSize="Body" x:Name="WelcomMessageLabel"
-                   Text="Welcome, Ted"></Label>
-
-                <Button Text="Logout"
-                    WidthRequest="200"
-                    BackgroundColor="DarkRed" />
+                <Button Text="Save" Clicked="SaveButton_Clicked" />
 
             </VerticalStackLayout>
 
         </HorizontalStackLayout>
     </ScrollView>
+
 </ContentPage>

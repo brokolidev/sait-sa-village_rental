@@ -31,5 +31,15 @@ namespace VillageRentalsPrototype.Models
             ReturnedAt = returnedAt;
             Cost = cost;
         }
+
+        // for saving purposes
+        public Rental(int customerId, int equipmentId, DateTime rentedAt, DateTime returnedAt, double cost)
+        {
+            CustomerId = customerId;
+            EquipmentId = equipmentId;
+            RentedAt = rentedAt;
+            ReturnedAt = returnedAt;
+            Cost = cost;
+        }
     }
 }
