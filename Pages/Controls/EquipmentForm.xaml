@@ -17,7 +17,8 @@
         <Label Text="Daily Rate" />
         <Entry x:Name="DailyRate" Placeholder="Daily Rate" />
 
-        <Button Text="Add" Clicked="SaveButton_Clicked" />
+        <Button Text="Add" x:Name="AddButton" Clicked="SaveButton_Clicked" />
+        <Button Text="Update" Clicked="EditButton_Clicked" x:Name="UpdateButton" />
         <Button Text="Cancel" Clicked="CancelButton_Clicked" Background="#344" />
 
     </VerticalStackLayout>

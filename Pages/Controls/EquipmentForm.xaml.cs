@@ -11,7 +11,7 @@ public partial class EquipmentForm : ContentView
 	private List<Category> categories;
 	private DatabaseManager dbManger;
 	private Category selectedCategory;
-    private Models.Equipment? selecteEquipment;
+    private Models.Equipment? selectedEquipment;
 
     public string? eqId
     {
@@ -21,10 +21,7 @@ public partial class EquipmentForm : ContentView
             {
                 dbManger = new DatabaseManager();
                 var eq = dbManger.GetEquipment(Int32.Parse(value));
-                if(eq != null)
-                {
-                    selecteEquipment = eq;
-                }
+                selectedEquipment = eq;
             }
         }
     }
@@ -50,6 +47,15 @@ public partial class EquipmentForm : ContentView
         {
             CategoryPicker.SelectedIndex = 0;
             Debug.WriteLine("CategoryPicker.SelectedIndex = 0");
+        }
+
+        if(selectedEquipment == null)
+        {
+            UpdateButton.IsVisible = false;
+        }
+        else
+        {
+            AddButton.IsVisible = false;
         }
     }
 
@@ -78,6 +84,11 @@ public partial class EquipmentForm : ContentView
     private void CancelButton_Clicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(EquipmentList));
+    }
+
+    private void EditButton_Clicked(object sender, EventArgs e)
+    {
+        // update equipment
     }
 
 }
