@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using VillageRentalsPrototype.Models;
 
 namespace VillageRentalsPrototype.Managers
@@ -46,25 +47,32 @@ namespace VillageRentalsPrototype.Managers
         //    }
         //}
 
-        // update course in the table
-        //public void UpdateStudent(Course course)
-        //{
-        //    using (var connection = new SQLiteConnection(connectionString))
-        //    {
-        //        connection.Open();
+        // update equipment
+        public void UpdateEqeuipment(Equipment eq)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
 
-        //        var query = "UPDATE Courses SET CourseId=@CourseId, Name=@Name, Credits=@Credits WHERE id=@Id";
+                var query = "UPDATE equipment SET " +
+                    "category_id=@CategoryId, " +
+                    "name=@Name, " +
+                    "description=@Description, " +
+                    "daily_rate=@DailyRate " +
+                    "WHERE id=@Id";
 
-        //        using (var command = new SQLiteCommand(query, connection))
-        //        {
-        //            command.Parameters.AddWithValue("@CourseId", course.CourseId);
-        //            command.Parameters.AddWithValue("@Name", course.Name);
-        //            command.Parameters.AddWithValue("@Credits", course.Credits);
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@CategoryId", eq.CategoryId);
+                    command.Parameters.AddWithValue("@Name", eq.Name);
+                    command.Parameters.AddWithValue("@Description", eq.Description);
+                    command.Parameters.AddWithValue("@DailyRate", eq.DailyRate);
+                    command.Parameters.AddWithValue("@Id", eq.Id);
 
-        //            command.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
 
         // add new equipment
         public void AddEquipment(int categoryId, string name, string description, double dailyRate)
@@ -160,7 +168,8 @@ namespace VillageRentalsPrototype.Managers
             {
                 connection.Open();
 
-                var query = "SELECT e.id, e.name, description, daily_rate, c.name as category_name " +
+                var query = "SELECT e.id, e.name, description, daily_rate, " +
+                    "category_id, c.name as category_name " +
                     "FROM equipment e join category c on e.category_id=c.id " +
                     "WHERE e.id=@Id";
                 
@@ -177,7 +186,8 @@ namespace VillageRentalsPrototype.Managers
                                 reader.GetString("name"),
                                 reader.GetString("description"),
                                 reader.GetDouble("daily_rate"),
-                                reader.GetString("category_name")
+                                reader.GetString("category_name"),
+                                reader.GetInt32("category_id")
                             );
                         }
                     }

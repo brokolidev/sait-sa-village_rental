@@ -18,7 +18,7 @@ namespace VillageRentalsPrototype.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public double DailyRate { get; set; }
-        public string CategoryName { get; set; }
+        public string? CategoryName { get; set; }
 
         public Equipment(int id, string name, string description, double dailyRate, string categoryName)
         {
@@ -27,6 +27,17 @@ namespace VillageRentalsPrototype.Models
             Name = name;
             Description = description;
             DailyRate = dailyRate;
+        }
+
+        // constructor for editing 
+        public Equipment(int id, string name, string description, double dailyRate, string categoryName, int categoryId)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            DailyRate = dailyRate;
+            CategoryName = categoryName;
+            CategoryId = categoryId;
         }
     }
 }

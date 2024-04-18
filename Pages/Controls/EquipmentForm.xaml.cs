@@ -10,7 +10,8 @@ public partial class EquipmentForm : ContentView
 {
     private List<Category> categories;
 	private DatabaseManager dbManger;
-	private Category selectedCategory;
+    private Category selectedCategory;
+	
     public bool IsEdit { get; set; }
 
     //Creating properties to access xaml tags in UI
@@ -18,6 +19,20 @@ public partial class EquipmentForm : ContentView
     {
         get => IdEntry.Text;
         set { IdEntry.Text = value; }
+    }
+
+    public int SelectedCategoryId
+    {
+        get
+        {
+            var selectedCategory = (Category)CategoryPicker.SelectedItem;
+            return selectedCategory.Id;
+        }
+
+        set
+        {
+            CategoryPicker.SelectedItem = categories.Find(c => c.Id == value);
+        }
     }
 
     public string Name
@@ -50,7 +65,6 @@ public partial class EquipmentForm : ContentView
 		CategoryPicker.ItemsSource = categories;
 
         CategoryPicker.ItemDisplayBinding = new Binding("Name");
-        CategoryPicker.SelectedIndexChanged += OnCategoryIndexChanged;
     }
 
     protected override void OnParentSet()
@@ -72,20 +86,21 @@ public partial class EquipmentForm : ContentView
             IdLabel.IsVisible = false;
             IdEntry.IsVisible = false;
         }
+
+        CategoryPicker.SelectedIndexChanged += OnCategoryIndexChanged;
     }
 
 	private void OnCategoryIndexChanged(object sender, EventArgs e)
 	{
         selectedCategory = (Category)CategoryPicker.SelectedItem;
+        Debug.WriteLine($"Selected Category variable {selectedCategory}");
     }
 
 
 	private void SaveButton_Clicked(object sender, EventArgs e)
 	{
-        // validate form
-        if (string.IsNullOrEmpty(NameEntry.Text) || string.IsNullOrEmpty(DescriptionEntry.Text) || string.IsNullOrEmpty(DailyRateEntry.Text) || selectedCategory == null)
+        if(!ValidateForms())
         {
-            Debug.WriteLine("All fields are required");
             return;
         }
 
@@ -101,7 +116,33 @@ public partial class EquipmentForm : ContentView
 
     private void EditButton_Clicked(object sender, EventArgs e)
     {
-        // update equipment
+        if (!ValidateForms())
+        {
+            return;
+        }
+
+        dbManger.UpdateEqeuipment(new Models.Equipment(
+            int.Parse(IdEntry.Text), 
+            NameEntry.Text, 
+            DescriptionEntry.Text, 
+            double.Parse(DailyRateEntry.Text),
+            selectedCategory.Name,
+            selectedCategory.Id
+        ));
+
+        Shell.Current.GoToAsync(nameof(EquipmentList));
+    }
+
+    private bool ValidateForms()
+    {
+        // validate form
+        if (string.IsNullOrEmpty(NameEntry.Text) || string.IsNullOrEmpty(DescriptionEntry.Text) || string.IsNullOrEmpty(DailyRateEntry.Text) || selectedCategory == null)
+        {
+            Debug.WriteLine("All fields are required");
+            return false;
+        }
+
+        return true;
     }
 
 }

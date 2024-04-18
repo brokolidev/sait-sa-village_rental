@@ -20,6 +20,7 @@ public partial class EquipmentEdit : ContentPage
                 EquipmentForm.Name = selectedEquipment.Name;
                 EquipmentForm.Description = selectedEquipment.Description;
                 EquipmentForm.DailyRate = selectedEquipment.DailyRate.ToString();
+                EquipmentForm.SelectedCategoryId = selectedEquipment.CategoryId;
             }
         }
     }
