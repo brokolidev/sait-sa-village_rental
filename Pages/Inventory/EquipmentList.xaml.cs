@@ -36,10 +36,4 @@ public partial class EquipmentList : ContentPage
 		Shell.Current.GoToAsync(nameof(EquipmentNew));
     }
 
-
-	// navigation functions
-	private void EquipmentButton_Clicked(object sender, EventArgs e)
-	{
-		// do nothing
-	}
 }

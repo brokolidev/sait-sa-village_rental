@@ -61,7 +61,7 @@
                     Clicked="DeleteButton_Clicked"
                     Text="Delete" />
 
-                <Button Text="Cancel" BackgroundColor="DarkGray" Clicked="Cancel_Clicked" />
+                <Button Text="Cancel" BackgroundColor="#344" Clicked="Cancel_Clicked" />
 
 
             </VerticalStackLayout>
