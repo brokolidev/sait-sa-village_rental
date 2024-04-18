@@ -251,5 +251,38 @@ namespace VillageRentalsPrototype.Managers
             }
         }
 
+
+        // get customer by id
+        public Customer? GetCustomerById(int id)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "SELECT * FROM customer WHERE id=@Id";
+
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            return new Customer(
+                                reader.GetInt32("id"),
+                                reader.GetString("last_name"),
+                                reader.GetString("first_name"),
+                                reader.GetString("phone"),
+                                reader.GetString("email")
+                            );
+                        }
+                    }
+
+                    return null;
+                }
+            }
+        }
+
     }
 }

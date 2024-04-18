@@ -13,7 +13,8 @@
 
                 <Label FontSize="Header">Add New Equipment</Label>
 
-                <controls:CustomerForm x:Name="CustomerForm" OnValidationErrorOccured="ValidationAlert" />
+                <controls:CustomerForm x:Name="CustomerForm" 
+                                       OnValidationErrorOccured="ValidationAlert" />
 
             </VerticalStackLayout>
 

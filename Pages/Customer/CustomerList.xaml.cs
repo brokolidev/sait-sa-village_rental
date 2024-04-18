@@ -19,6 +19,18 @@ public partial class CustomerList : ContentPage
 
         // set the items source for the list view
         CustomerListView.ItemsSource = customers;
+        CustomerListView.ItemSelected += OnCustomerSelected;
+    }
+
+    private void OnCustomerSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        if (CustomerListView.SelectedItem == null)
+            return;
+
+        var selectedCustomer = (Models.Customer)e.SelectedItem;
+
+        Shell.Current.GoToAsync($"{nameof(CustomerView)}" +
+            $"?Id={selectedCustomer.Id}");
     }
 
     private void AddCustomer_Clicked(object sender, EventArgs e)

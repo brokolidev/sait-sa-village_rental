@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using VillageRentalsPrototype.Managers;
 using VillageRentalsPrototype.Models;
 using VillageRentalsPrototype.Pages.Customer;
@@ -8,6 +9,7 @@ public partial class CustomerForm : ContentView
 {
     public event EventHandler<EventArgs> OnValidationErrorOccured;
     private DatabaseManager dbManger;
+    public bool IsEdit { get; set; }
 
 
     public CustomerForm()
@@ -15,6 +17,22 @@ public partial class CustomerForm : ContentView
 		InitializeComponent();
 
         dbManger = new DatabaseManager();
+    }
+
+    protected override void OnParentSet()
+    {
+        base.OnParentSet();
+
+        if (IsEdit)
+        {
+            AddButton.IsVisible = false;
+        }
+        else
+        {
+            UpdateButton.IsVisible = false;
+            IdLabel.IsVisible = false;
+            IdEntry.IsVisible = false;
+        }
     }
 
     private void SaveButton_Clicked(object sender, EventArgs e)
