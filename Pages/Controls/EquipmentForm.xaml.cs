@@ -1,32 +1,45 @@
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using VillageRentalsPrototype.Managers;
 using VillageRentalsPrototype.Models;
 using VillageRentalsPrototype.Pages.Inventory;
 
 namespace VillageRentalsPrototype.Pages.Controls;
 
-[QueryProperty(nameof(eqId), "Id")]
 public partial class EquipmentForm : ContentView
 {
-	private List<Category> categories;
+    private List<Category> categories;
 	private DatabaseManager dbManger;
 	private Category selectedCategory;
-    private Models.Equipment? selectedEquipment;
+    public bool IsEdit { get; set; }
 
-    public string? eqId
+    //Creating properties to access xaml tags in UI
+    public string Id
     {
-        set
-        {
-            if(value != null)
-            {
-                dbManger = new DatabaseManager();
-                var eq = dbManger.GetEquipment(Int32.Parse(value));
-                selectedEquipment = eq;
-            }
-        }
+        get => IdEntry.Text;
+        set { IdEntry.Text = value; }
     }
 
-	public EquipmentForm()
+    public string Name
+    {
+        get => NameEntry.Text;
+        set { NameEntry.Text = value; }
+    }
+
+    public string Description
+    {
+        get => DescriptionEntry.Text;
+        set { DescriptionEntry.Text = value; }
+    }
+
+    public string DailyRate
+    {
+        get => DailyRateEntry.Text;
+        set { DailyRateEntry.Text = value; }
+    }
+
+
+    public EquipmentForm()
 	{
 		InitializeComponent();
 
@@ -43,40 +56,40 @@ public partial class EquipmentForm : ContentView
     protected override void OnParentSet()
     {
         base.OnParentSet();
+
         if (CategoryPicker.SelectedIndex == -1)
         {
             CategoryPicker.SelectedIndex = 0;
-            Debug.WriteLine("CategoryPicker.SelectedIndex = 0");
         }
 
-        if(selectedEquipment == null)
+        if(IsEdit)
         {
-            UpdateButton.IsVisible = false;
+            AddButton.IsVisible = false;
         }
         else
         {
-            AddButton.IsVisible = false;
+            UpdateButton.IsVisible = false;
+            IdLabel.IsVisible = false;
+            IdEntry.IsVisible = false;
         }
     }
 
 	private void OnCategoryIndexChanged(object sender, EventArgs e)
 	{
         selectedCategory = (Category)CategoryPicker.SelectedItem;
-        Debug.WriteLine("CategoryPicker changed");
-        Debug.WriteLine(selectedCategory.Name);
     }
 
 
 	private void SaveButton_Clicked(object sender, EventArgs e)
 	{
         // validate form
-        if (string.IsNullOrEmpty(Name.Text) || string.IsNullOrEmpty(Description.Text) || string.IsNullOrEmpty(DailyRate.Text) || selectedCategory == null)
+        if (string.IsNullOrEmpty(NameEntry.Text) || string.IsNullOrEmpty(DescriptionEntry.Text) || string.IsNullOrEmpty(DailyRateEntry.Text) || selectedCategory == null)
         {
             Debug.WriteLine("All fields are required");
             return;
         }
 
-        dbManger.AddEquipment(selectedCategory.Id, Name.Text, Description.Text, double.Parse(DailyRate.Text));
+        dbManger.AddEquipment(selectedCategory.Id, NameEntry.Text, DescriptionEntry.Text, double.Parse(DailyRateEntry.Text));
 
         Shell.Current.GoToAsync(nameof(EquipmentList));
     }

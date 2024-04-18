@@ -8,8 +8,7 @@
     <ScrollView>
         <HorizontalStackLayout>
 
-            <controls:Nav x:Name="NavControl"
-            OnEquipmentMangementClicked="EquipmentButton_Clicked" />
+            <controls:Nav x:Name="NavControl" />
 
             <VerticalStackLayout Padding="20" Spacing="15">
 

@@ -8,14 +8,17 @@
         <Picker Title="Category" x:Name="CategoryPicker">
         </Picker>
 
+        <Label Text="ID" x:Name="IdLabel" />
+        <Entry x:Name="IdEntry" IsReadOnly="True" />
+
         <Label Text="Name" />
-        <Entry x:Name="Name" Placeholder="Name" />
+        <Entry x:Name="NameEntry" Placeholder="Name" />
 
         <Label Text="Description" />
-        <Entry x:Name="Description" Placeholder="Description" />
+        <Entry x:Name="DescriptionEntry" Placeholder="Description" />
 
         <Label Text="Daily Rate" />
-        <Entry x:Name="DailyRate" Placeholder="Daily Rate" />
+        <Entry x:Name="DailyRateEntry" Placeholder="Daily Rate" />
 
         <Button Text="Add" x:Name="AddButton" Clicked="SaveButton_Clicked" />
         <Button Text="Update" Clicked="EditButton_Clicked" x:Name="UpdateButton" />

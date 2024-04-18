@@ -22,8 +22,7 @@ public partial class EquipmentView : ContentPage
         set
         {
             int id = Convert.ToInt32(value);
-            equipment = dbManager.GetEquipment(id);
-            Debug.WriteLine(equipment);
+            equipment = dbManager.GetEquipmentById(id);
         }
     }
 
@@ -59,6 +58,7 @@ public partial class EquipmentView : ContentPage
 
     private void EditButton_Clicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync(nameof(EquipmentEdit));
+        Shell.Current.GoToAsync($"{nameof(EquipmentEdit)}" +
+            $"?Id={equipment.Id}");
     }
 }

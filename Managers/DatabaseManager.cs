@@ -154,7 +154,7 @@ namespace VillageRentalsPrototype.Managers
         }
 
         // get equipment by id
-        public Equipment GetEquipment(int id)
+        public Equipment? GetEquipmentById(int id)
         {
             using (var connection = new MySqlConnection(connectionString))
             {
@@ -170,15 +170,19 @@ namespace VillageRentalsPrototype.Managers
 
                     using (var reader = command.ExecuteReader())
                     {
-                        reader.Read();
-                        return new Equipment(
+                        while (reader.Read())
+                        {
+                            return new Equipment(
                                 reader.GetInt32("id"),
                                 reader.GetString("name"),
                                 reader.GetString("description"),
                                 reader.GetDouble("daily_rate"),
                                 reader.GetString("category_name")
-                        );
+                            );
+                        }
                     }
+
+                    return null;
                 }
             }
         }
