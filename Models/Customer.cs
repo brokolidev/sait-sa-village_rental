@@ -28,5 +28,15 @@ namespace VillageRentalsPrototype.Models
             Email = email;
         }
 
+
+        // for creating 
+        public Customer(string lastName, string firstName, string phone, string email)
+        {
+            LastName = lastName;
+            FirstName = firstName;
+            Phone = phone;
+            Email = email;
+        }
+
     }
 }

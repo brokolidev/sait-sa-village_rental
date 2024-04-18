@@ -6,4 +6,9 @@ public partial class CustomerEdit : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void ValidationAlert(object sender, EventArgs e)
+    {
+        DisplayAlert("Error", "Please fill out all fields", "OK");
+    }
 }

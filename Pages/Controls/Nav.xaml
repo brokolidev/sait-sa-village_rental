@@ -8,30 +8,28 @@
 
         <!-- Logo -->
         <Button BackgroundColor="#1B1A55" TextColor="White"
-            x:Name="HomeButton"
             WidthRequest="200"
             Clicked="HomeButton_Clicked"
             Text="Home" />
 
         <Button BackgroundColor="#1B1A55" TextColor="White"
             WidthRequest="200"
-            x:Name="RentalButton"
+            Clicked="RentalButton_Clicked"
             Text="Rental" />
 
         <Button BackgroundColor="#1B1A55" TextColor="White"
             WidthRequest="200"
-            x:Name="CustomerButton"
+            Clicked="CustomerButton_Clicked"
             Text="Manage Customer" />
 
         <Button BackgroundColor="#1B1A55" TextColor="White"
-            x:Name="EquipmentButton"
             WidthRequest="200"
             Clicked="EquipmentButton_Clicked"
             Text="Manage Inventory" />
 
         <Button BackgroundColor="#1B1A55" TextColor="White"
-            x:Name="SystemButton"
             WidthRequest="200"
+            Clicked="SystemButton_Clicked"
             Text="Manage System" />
 
     </VerticalStackLayout>

@@ -196,5 +196,60 @@ namespace VillageRentalsPrototype.Managers
             }
         }
 
+        // get all customers from the table
+        public List<Customer> GetAllCustomers()
+        {
+            List<Customer> customers = new List<Customer>();
+
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "SELECT * from customer";
+
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            customers.Add(
+                                new Customer(
+                                    reader.GetInt32("id"),
+                                    reader.GetString("last_name"),
+                                    reader.GetString("first_name"),
+                                    reader.GetString("phone"),
+                                    reader.GetString("email")
+                                    )
+                                );
+                        }
+                    }
+                }
+            }
+
+            return customers;
+        }
+
+        // add new customer
+        public void AddCustomer(Customer customer)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "INSERT INTO customer(last_name, first_name, phone, email) VALUES (@LastName, @FirstName, @Phone, @Email)";
+
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Phone", customer.Phone);
+                    command.Parameters.AddWithValue("@LastName", customer.LastName);
+                    command.Parameters.AddWithValue("@FirstName", customer.FirstName);
+                    command.Parameters.AddWithValue("@Email", customer.Email);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }
