@@ -12,13 +12,9 @@
             <VerticalStackLayout Padding="20" Spacing="20">
 
                 <Label FontSize="Header">Village Rental</Label>
-                
-                <Label FontSize="Body" x:Name="WelcomMessageLabel"
-                       Text="Welcome, Ted"></Label>
 
-                <Button Text="Logout"
-                        WidthRequest="200"
-                        BackgroundColor="DarkRed" />
+                <Label FontSize="Title" x:Name="WelcomMessageLabel"
+                       Text="Welcome, Tommy"></Label>
 
             </VerticalStackLayout>
 

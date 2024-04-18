@@ -5,6 +5,7 @@ namespace VillageRentalsPrototype.Pages.Controls;
 public partial class Nav : ContentView
 {
     public event EventHandler<EventArgs> OnEquipmentMangementClicked;
+    public event EventHandler<EventArgs> OnHomeClicked;
 
     public Nav()
 	{
@@ -20,7 +21,18 @@ public partial class Nav : ContentView
 		else
 		{
             Shell.Current.GoToAsync(nameof(EquipmentList));
+        }	
+    }
+
+	private void HomeButton_Clicked(object sender, EventArgs e)
+	{
+        if(OnHomeClicked != null)
+		{
+            OnHomeClicked?.Invoke(this, e);
         }
-		
+        else
+        {
+            Shell.Current.Navigation.PopToRootAsync();
+        }
     }
 }

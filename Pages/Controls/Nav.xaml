@@ -8,7 +8,9 @@
 
         <!-- Logo -->
         <Button BackgroundColor="#1B1A55" TextColor="White"
+            x:Name="HomeButton"
             WidthRequest="200"
+            Clicked="HomeButton_Clicked"
             Text="Home" />
 
         <Button BackgroundColor="#1B1A55" TextColor="White"
