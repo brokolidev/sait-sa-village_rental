@@ -8,15 +8,48 @@ namespace VillageRentalsPrototype.Pages.Controls;
 public partial class CustomerForm : ContentView
 {
     public event EventHandler<EventArgs> OnValidationErrorOccured;
-    private DatabaseManager dbManger;
+
+    private DatabaseManager dbManager;
+    
     public bool IsEdit { get; set; }
+
+    //Creating properties to access xaml tags in UI
+    public string Id
+    {
+        get => IdEntry.Text;
+        set { IdEntry.Text = value; }
+    }
+
+    public string FirstName
+    {
+        get => FirstNameEntry.Text;
+        set { FirstNameEntry.Text = value; }
+    }
+
+    public string LastName
+    {
+        get => LastNameEntry.Text;
+        set { LastNameEntry.Text = value; }
+    }
+
+    public string Email
+    {
+        get => EmailEntry.Text;
+        set { EmailEntry.Text = value; }
+    }
+
+    public string Phone
+    {
+        get => PhoneEntry.Text;
+        set { PhoneEntry.Text = value; }
+    }
 
 
     public CustomerForm()
 	{
 		InitializeComponent();
 
-        dbManger = new DatabaseManager();
+        dbManager = new DatabaseManager();
     }
 
     protected override void OnParentSet()
@@ -44,7 +77,7 @@ public partial class CustomerForm : ContentView
         }
 
         // add customer to database
-        dbManger.AddCustomer(new Models.Customer(
+        dbManager.AddCustomer(new Models.Customer(
             LastNameEntry.Text,
             FirstNameEntry.Text,
             PhoneEntry.Text,
@@ -68,6 +101,13 @@ public partial class CustomerForm : ContentView
         }
 
         // update customer info
+        dbManager.UpdateCustomer(new Models.Customer(
+            Int32.Parse(IdEntry.Text),
+            LastNameEntry.Text,
+            FirstNameEntry.Text,
+            PhoneEntry.Text,
+            EmailEntry.Text
+        ));
 
         Shell.Current.GoToAsync(nameof(CustomerList));
     }

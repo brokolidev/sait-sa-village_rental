@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using VillageRentalsPrototype.Managers;
 using VillageRentalsPrototype.Models;
 
@@ -64,14 +65,14 @@ public partial class CustomerView : ContentPage
             return;
         }
 
-        dbManager.DeleteEquipment(customer.Id);
+        dbManager.DeleteCustomer(customer.Id);
 
         Shell.Current.GoToAsync(nameof(CustomerList));
     }
 
     private void EditButton_Clicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync($"{nameof(CustomerEdit)}" +
-            $"?Id={customer.Id}");
+        Debug.WriteLine($"Edit customer {customer.Id}");
+        Shell.Current.GoToAsync($"{nameof(CustomerEdit)}?Id={customer.Id}");
     }
 }

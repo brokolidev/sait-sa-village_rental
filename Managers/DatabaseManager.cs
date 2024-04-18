@@ -284,5 +284,49 @@ namespace VillageRentalsPrototype.Managers
             }
         }
 
+        // update customer
+        public void UpdateCustomer(Customer customer)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "UPDATE customer SET " +
+                    "first_name=@FirstName, " +
+                    "last_name=@LastName, " +
+                    "phone=@Phone, " +
+                    "email=@Email " +
+                    "WHERE id=@Id";
+
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Phone", customer.Phone);
+                    command.Parameters.AddWithValue("@LastName", customer.LastName);
+                    command.Parameters.AddWithValue("@FirstName", customer.FirstName);
+                    command.Parameters.AddWithValue("@Email", customer.Email);
+                    command.Parameters.AddWithValue("@Id", customer.Id);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // delete equipment from the table
+        public void DeleteCustomer(int id)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "DELETE FROM customer WHERE id=@Id";
+
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }
