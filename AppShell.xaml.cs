@@ -28,6 +28,7 @@ namespace VillageRentalsPrototype
 
             // Rental
             Routing.RegisterRoute(nameof(Rental), typeof(Rental));
+            Routing.RegisterRoute(nameof(RentalList), typeof(RentalList));
 
             // System
             Routing.RegisterRoute(nameof(CategoryList), typeof(CategoryList));

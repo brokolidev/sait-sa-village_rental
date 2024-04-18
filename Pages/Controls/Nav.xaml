@@ -19,6 +19,11 @@
 
         <Button BackgroundColor="#1B1A55" TextColor="White"
             WidthRequest="200"
+            Clicked="RentalList_Clicked"
+            Text="Rental History" />
+
+        <Button BackgroundColor="#1B1A55" TextColor="White"
+            WidthRequest="200"
             Clicked="CustomerButton_Clicked"
             Text="Manage Customer" />
 

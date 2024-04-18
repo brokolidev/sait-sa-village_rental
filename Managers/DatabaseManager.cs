@@ -352,5 +352,44 @@ namespace VillageRentalsPrototype.Managers
             }
         }
 
+
+        // get all rentals
+        public List<Rental> GetAllRentals()
+        {
+            List<Rental> customers = new List<Rental>();
+
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "select r.id, r.customer_id, r.equipment_id, r.rented_at, r.created_at, r.returned_at, r.cost,\r\nconcat(c.first_name, \", \", c.last_name) as customer_name,\r\ne.`name` as equipment_name\r\nfrom rental r\r\njoin customer c on c.id = r.customer_id\r\njoin equipment e on e.id = r.equipment_id\r\norder by created_at desc";
+
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            customers.Add(
+                                new Rental(
+                                    reader.GetInt32("id"),
+                                    reader.GetDateTime("created_at"),
+                                    reader.GetInt32("customer_id"),
+                                    reader.GetInt32("equipment_id"),
+                                    reader.GetDateTime("rented_at"),
+                                    reader.GetDateTime("returned_at"),
+                                    reader.GetDouble("cost"),
+                                    reader.GetString("customer_name"),
+                                    reader.GetString("equipment_name")
+                                    )
+                                );
+                        }
+                    }
+                }
+            }
+
+            return customers;
+        }
+
     }
 }

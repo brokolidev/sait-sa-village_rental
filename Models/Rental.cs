@@ -16,12 +16,14 @@ namespace VillageRentalsPrototype.Models
         public int Id { get; set; }
         public DateTime CreatedAt { get; set; }
         public int CustomerId { get; set; }
+        public string CustomerName { get; set; }
         public int EquipmentId { get; set; }
+        public string EquipmentName { get; set; }
         public DateTime RentedAt { get; set; }
         public DateTime ReturnedAt { get; set; }
         public double Cost { get; set; }
 
-        public Rental(int id, DateTime createdAt, int customerId, int equipmentId, DateTime rentedAt, DateTime returnedAt, double cost)
+        public Rental(int id, DateTime createdAt, int customerId, int equipmentId, DateTime rentedAt, DateTime returnedAt, double cost, string customerName, string equipmentName)
         {
             Id = id;
             CreatedAt = createdAt;
@@ -30,6 +32,8 @@ namespace VillageRentalsPrototype.Models
             RentedAt = rentedAt;
             ReturnedAt = returnedAt;
             Cost = cost;
+            CustomerName = customerName;
+            EquipmentName = equipmentName;
         }
 
         // for saving purposes

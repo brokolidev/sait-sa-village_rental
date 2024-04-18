@@ -100,6 +100,9 @@
 	  <MauiXaml Update="Pages\Rental.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\RentalList.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\Report\ItemsByCategory.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

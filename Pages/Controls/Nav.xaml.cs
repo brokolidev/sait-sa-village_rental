@@ -11,7 +11,6 @@ public partial class Nav : ContentView
     public event EventHandler<EventArgs> OnManageInventoryClicked;
     public event EventHandler<EventArgs> OnManageSystemClicked;
 
-
     public Nav()
 	{
 		InitializeComponent();
@@ -75,5 +74,10 @@ public partial class Nav : ContentView
         {
             Shell.Current.GoToAsync(nameof(System));
         }
+    }
+
+    private void RentalList_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync(nameof(RentalList));
     }
 }
