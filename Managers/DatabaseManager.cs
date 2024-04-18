@@ -138,7 +138,7 @@ namespace VillageRentalsPrototype.Managers
             {
                 connection.Open();
 
-                var query = "SELECT * FROM category";
+                var query = "SELECT * FROM category order by id desc";
 
                 using (var command = new MySqlCommand(query, connection))
                 {
@@ -389,6 +389,41 @@ namespace VillageRentalsPrototype.Managers
             }
 
             return customers;
+        }
+
+
+        // add new category
+        public void AddCategory(string name)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "INSERT INTO category(name) VALUES (@Name)";
+
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Name", name);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // delete equipment from the table
+        public void DeleteCategory(int id)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "DELETE FROM category WHERE id=@Id";
+
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
     }

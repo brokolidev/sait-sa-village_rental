@@ -2,11 +2,42 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VillageRentalsPrototype.Pages.System.CategoryList"
+             xmlns:controls="clr-namespace:VillageRentalsPrototype.Pages.Controls"
              Title="CategoryList">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ScrollView>
+        <HorizontalStackLayout>
+
+            <controls:Nav x:Name="NavControl" />
+
+            <VerticalStackLayout Padding="20" Spacing="15">
+
+                <Label FontSize="Header">Category Management</Label>
+
+                <ListView x:Name="CategoryListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <HorizontalStackLayout Spacing="10" Padding="10">
+                                    <Label Text="{Binding Id}" FontSize="Small" />
+                                    <Label Text=" / " FontSize="Small" />
+                                    <Label Text="{Binding Name}" FontSize="Small" />
+                                    <Button Text="Delete" Clicked="Delete_Clicked" 
+                                            CommandParameter="{Binding Id}"
+                                            BackgroundColor="DarkRed" TextColor="White"
+                                            FontSize="Caption"  />
+                                </HorizontalStackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Entry x:Name="CategoryNameEntry" Placeholder="Category Name" />
+                <Button Text="Add New Category" Clicked="Add_Clicked" />
+
+            </VerticalStackLayout>
+
+        </HorizontalStackLayout>
+    </ScrollView>
+
 </ContentPage>

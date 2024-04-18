@@ -16,6 +16,7 @@
                 <Label FontSize="Title" x:Name="WelcomMessageLabel"
                        Text="Welcome, Tommy"></Label>
 
+                <Label FontSize="Body" Text="Here are some of the latest rentals in your area."></Label>
             </VerticalStackLayout>
 
         </HorizontalStackLayout>

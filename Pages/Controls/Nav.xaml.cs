@@ -1,5 +1,6 @@
 using VillageRentalsPrototype.Pages.Customer;
 using VillageRentalsPrototype.Pages.Inventory;
+using VillageRentalsPrototype.Pages.System;
 
 namespace VillageRentalsPrototype.Pages.Controls;
 
@@ -72,7 +73,7 @@ public partial class Nav : ContentView
         }
         else
         {
-            Shell.Current.GoToAsync(nameof(System));
+            Shell.Current.GoToAsync(nameof(CategoryList));
         }
     }
 
