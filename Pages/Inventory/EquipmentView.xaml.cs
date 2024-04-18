@@ -51,9 +51,25 @@ public partial class EquipmentView : ContentPage
         Shell.Current.GoToAsync(nameof(EquipmentList));
     }
 
-    private void DeleteButton_Clicked(object sender, EventArgs e)
+    private async void DeleteButton_Clicked(object sender, EventArgs e)
     {
-        // Delete the equipment
+        // display alert to confirm deletion
+        bool answer = await DisplayAlert("Delete", "Are you sure you want to delete this equipment?", "Yes", "No");
+
+        if(!answer)
+        {
+            return;
+        }
+
+        if(equipment == null)
+        {
+            DisplayAlert("Error", "Equipment not found", "OK");
+            return;
+        }
+
+        dbManager.DeleteEquipment(equipment.Id);
+
+        Shell.Current.GoToAsync(nameof(EquipmentList));
     }
 
     private void EditButton_Clicked(object sender, EventArgs e)

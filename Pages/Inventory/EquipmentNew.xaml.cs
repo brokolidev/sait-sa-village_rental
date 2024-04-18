@@ -15,4 +15,9 @@ public partial class EquipmentNew : ContentPage
     {
         Shell.Current.GoToAsync(nameof(EquipmentList));
     }
+
+    private void ValidationAlert(object sender, EventArgs e)
+    {
+        DisplayAlert("Error", "Please fill out all fields", "OK");
+    }
 }

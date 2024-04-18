@@ -11,7 +11,8 @@ public partial class EquipmentForm : ContentView
     private List<Category> categories;
 	private DatabaseManager dbManger;
     private Category selectedCategory;
-	
+    public event EventHandler<EventArgs> OnValidationErrorOccured;
+
     public bool IsEdit { get; set; }
 
     //Creating properties to access xaml tags in UI
@@ -101,6 +102,7 @@ public partial class EquipmentForm : ContentView
 	{
         if(!ValidateForms())
         {
+            OnValidationErrorOccured?.Invoke(this, e);
             return;
         }
 
@@ -118,6 +120,7 @@ public partial class EquipmentForm : ContentView
     {
         if (!ValidateForms())
         {
+            OnValidationErrorOccured?.Invoke(this, e);
             return;
         }
 
@@ -138,7 +141,7 @@ public partial class EquipmentForm : ContentView
         // validate form
         if (string.IsNullOrEmpty(NameEntry.Text) || string.IsNullOrEmpty(DescriptionEntry.Text) || string.IsNullOrEmpty(DailyRateEntry.Text) || selectedCategory == null)
         {
-            Debug.WriteLine("All fields are required");
+            // Display alert 
             return false;
         }
 

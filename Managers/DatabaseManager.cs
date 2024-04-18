@@ -29,23 +29,22 @@ namespace VillageRentalsPrototype.Managers
 
 
 
-        // delete course from the table
-        //public void DeleteCourse(Course course)
-        //{
-        //    using (var connection = new SQLiteConnection(connectionString))
-        //    {
-        //        connection.Open();
+        // delete equipment from the table
+        public void DeleteEquipment(int id)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
 
-        //        var query = "DELETE FROM Courses WHERE CourseIdd=@CourseId";
+                var query = "DELETE FROM equipment WHERE id=@Id";
 
-        //        using (var command = new SQLiteCommand(query, connection))
-        //        {
-        //            command.Parameters.AddWithValue("@CourseId", course.CourseId);
-
-        //            command.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
 
         // update equipment
         public void UpdateEqeuipment(Equipment eq)

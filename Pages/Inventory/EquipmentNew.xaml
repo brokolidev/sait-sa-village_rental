@@ -14,7 +14,7 @@
 
                 <Label FontSize="Header">Add New Equipment</Label>
 
-                <controls:EquipmentForm x:Name="EquipmentForm" />
+                <controls:EquipmentForm x:Name="EquipmentForm" OnValidationErrorOccured="ValidationAlert" />
 
             </VerticalStackLayout>
 

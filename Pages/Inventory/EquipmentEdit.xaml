@@ -14,7 +14,9 @@
 
                 <Label FontSize="Header">Edit Equipment</Label>
 
-                <controls:EquipmentForm x:Name="EquipmentForm" IsEdit="True" />
+                <controls:EquipmentForm x:Name="EquipmentForm" 
+                                        IsEdit="True"
+                                        OnValidationErrorOccured="ValidationAlert"/>
 
             </VerticalStackLayout>
 

@@ -31,4 +31,9 @@ public partial class EquipmentEdit : ContentPage
 
         dbManger = new DatabaseManager();
     }
+
+    private void ValidationAlert(object sender, EventArgs e)
+    {
+        DisplayAlert("Error", "Please fill out all fields", "OK");
+    }
 }
